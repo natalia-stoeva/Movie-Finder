@@ -1,0 +1,173 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800;900&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --white: #ffffff;
+  --dark: #222222;
+  --accent-text: #cca646;
+  --retro-yellow: #e2d13f;
+  --retro-red: #892712;
+  --retro-blue: #2b817b;
+  --retro-neon: #ed155d;
+  --transparent-white: #ffffff2e;
+  --bg-dark: #141619;
+}
+
+body {
+  background-color: #080808;
+  height: 100vh;
+  color: var(--white);
+}
+
+/* Titles */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "League Spartan", sans-serif;
+  color: var(--white);
+}
+h1 {
+  color: var(--retro-neon);
+  font-size: 4rem;
+  text-shadow: -1px 4px 0px #141619;
+}
+.section-title {
+  color: var(--retro-neon);
+  border-bottom: 1px solid var(--retro-neon);
+}
+a {
+  text-decoration: none;
+  color: var(--accent-text);
+}
+
+.logo {
+  height: 75px;
+}
+
+a {
+  color: var(--accent-text);
+  font-family: "Noto Sans", sans-serif;
+}
+
+a:hover {
+  color: var(--retro-neon);
+}
+
+.profile {
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.banner-container {
+  background-image: url("./images/banner.png");
+  height: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.9;
+}
+
+.banner-text {
+  background-color: rgba(47, 39, 59, 0.5);
+}
+
+/* Images */
+.poster-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cast-img {
+  max-height: 100px;
+  width: 100px;
+  object-fit: cover;
+  background-color: var(--transparent-white);
+}
+
+.credits-image-sm {
+  height: 150px;
+  margin-right: 2rem;
+}
+
+/* Video Responsive */
+.video-responsive {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%;
+}
+iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* lists */
+.cast-li {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--transparent-white);
+}
+
+/* Search Bar */
+.form-control:focus {
+  border-color: var(--retro-neon);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px var(--retro-neon);
+}
+.search-btn {
+  background-color: var(--retro-neon);
+  color: var(--white);
+}
+.search-btn:hover {
+  background-color: var(--retro-blue);
+  color: var(--white);
+}
+
+/* Movie Card */
+.movie-card {
+  background-color: var(--bg-dark);
+  padding: 0;
+  margin: 10px 20px;
+}
+/* .movie-thumb{
+  width: 230px;
+  height: 340px;
+  object-fit: cover;
+} */
+.info-text {
+  color: var(--retro-blue);
+}
+.info-values {
+  color: var(--white);
+  opacity: 0.8;
+}
+/* Cast */
+
+/* Upload Page */
+.upload-btn {
+  display: none;
+}
+
+/* chevrons */
+.chevron {
+  font-size: 2rem;
+  border: 1px solid white;
+  padding: 15px 10px;
+  border-radius: 5px;
+  opacity: 0.7;
+}
+
+.chevron:active {
+  color: var(--retro-neon);
+  border-color: var(--retro-neon);
+  background-color: var(--transparent-white);
+}
