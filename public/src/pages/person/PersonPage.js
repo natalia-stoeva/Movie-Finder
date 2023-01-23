@@ -5,21 +5,32 @@ import { Heading } from "../../components/heading/Heading";
 import { MediaContainer } from "../../containers/media/MediaContainer";
 import { SectionTitle } from "../../components/section/SectionTitle";
 import { Text } from "../../components/text/Text";
+import { TextAndInfo } from "../../components/text/TextAndInfo";
 import { CreditsList } from "../../containers/creditsList/CreditsList";
+const moment = require("moment");
 
 export const PersonPage = () => {
   const { id } = useParams();
   const [person, setPerson] = useState(null);
   const [credits, setCredits] = useState(null);
+  const [birthday, setBirhtday] = useState(null);
+  const [deathday, setDeathday] = useState(null);
 
   useEffect(() => {
     async function getPersonData() {
       const personData = await getPeople(id);
       setPerson(personData);
       setCredits(personData.combined_credits);
+      setBirhtday(moment(personData.birthday).format("MMM DD, YYYY"));
+
+      if (personData.deathday) {
+        setDeathday(moment(personData.deathday).format("MMM DD, YYYY"));
+      }
     }
     getPersonData();
   }, []);
+
+  console.log(birthday);
 
   return (
     <div className="container">
@@ -33,15 +44,17 @@ export const PersonPage = () => {
             imgSize="medium"
             imgStyles={"poster-img"}
           />
-          <p>Known for department: {person.known_for_department}</p>
+          <p>{person.known_for_department}</p>
 
           <section>
             <SectionTitle name={"Biography"} />
             <article>
-              <p>
-                Born: <i className="info-values">{person.birthday} </i>
-              </p>
-              <i> {person.place_of_birth}</i>
+              <TextAndInfo
+                categorie={"Born"}
+                value={`${birthday}, ${person.place_of_birth}`}
+              />
+
+              {deathday && <TextAndInfo categorie={"Died"} value={deathday} />}
             </article>
 
             <article className="row my-3">
@@ -52,7 +65,6 @@ export const PersonPage = () => {
           <section>
             <SectionTitle name="Cast" />
             <CreditsList credits={credits.cast} />
-
           </section>
         </main>
       ) : (
@@ -61,64 +73,3 @@ export const PersonPage = () => {
     </div>
   );
 };
-
-//     return (
-//       <div className="container">
-//         {person ? (
-//           <div className="container">
-//             <Heading name={person.name} />
-
-//             <Poster path={person.profile_path} alt={person.name} />
-
-//             <div className="row py-2">
-//               <p>
-//                 <i>
-//                   Known for department:{" "}
-//                   <span className="info-values">
-//                     {person.known_for_department}
-//                   </span>
-//                 </i>{" "}
-//               </p>
-//             </div>
-
-//             <SectionTitle name={"Biography"} />
-
-//             <div className="row">
-//               <div className="col">
-//                 <p>
-//                   Place of Birth: <i>{person.place_of_birth}</i>
-//                 </p>
-//                 <p>
-//                   Born at: <i>{person.birthday}</i>
-//                 </p>
-//               </div>
-//             </div>
-
-//             <div className="row">
-//               <p>{person.biography}</p>
-//             </div>
-
-//             <SectionTitle name={"Credits"} />
-
-//             <ul className="list-group list-group-flush">
-//               {credits.cast.map((credit) => {
-//                 return (
-//                   <CreditsList
-//                     key={credit.id}
-//                     id={credit.id}
-//                     title={credit.title}
-//                     url={`${posterBaseURLSmall}${credit.poster_path}`}
-//                     type={credit.media_type}
-//                     character={credit.character}
-//                     year={credit.release_date}
-//                   />
-//                 );
-//               })}
-//             </ul>
-//           </div>
-//         ) : (
-//           <p>loading</p>
-//         )}
-//       </div>
-//     );
-//   };

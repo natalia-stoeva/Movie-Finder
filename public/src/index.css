@@ -171,3 +171,10 @@ iframe {
   border-color: var(--retro-neon);
   background-color: var(--transparent-white);
 }
+
+/* progress bar */
+.progress-bar-container{
+  position: absolute;
+  top: 336px;
+  left: 191px;
+}

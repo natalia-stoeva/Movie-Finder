@@ -25,6 +25,7 @@ export const HomePage = ({ searchResults }) => {
     getTrendingData();
   }, []);
 
+  console.log(trendingMovies);
   //trending tv shows
   const [trendingTvShows, setTrendingTvShows] = useState(null);
 
@@ -84,7 +85,7 @@ export const HomePage = ({ searchResults }) => {
                     id={show.id}
                     title={show.title}
                     image={show.poster_path}
-                    ratings={show.ratings}
+                    // ratings={show.ratings}
                     popularity={show.popularity}
                     date={show.first_air_date}
                     mediaType={"tv"}

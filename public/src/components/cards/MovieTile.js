@@ -1,7 +1,14 @@
 import React from "react";
 import { Poster } from "../media/Poster";
+const moment = require("moment");
 
 export const MovieTile = ({ id, image, title, year, character, mediaType }) => {
+
+  if(year) {
+    let formatedYear = moment(year).format("YYYY");
+    year = formatedYear
+    
+  }
   return (
     <li className="list-group-item bg-dark mb-2">
       <article className="row">
